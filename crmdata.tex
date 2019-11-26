@@ -1,0 +1,333 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={crm},
+            pdfauthor={laurent},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+% grffile has become a legacy package: https://ctan.org/pkg/grffile
+\IfFileExists{grffile.sty}{%
+\usepackage{grffile}
+}{}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{crm}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{laurent}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{19/11/2019}
+
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(summarytools)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'pryr':
+##   method      from
+##   print.bytes Rcpp
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## corrplot 0.84 loaded
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(PerformanceAnalytics)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: xts
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: zoo
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'zoo'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+\end{verbatim}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'xts':
+##   method     from
+##   as.zoo.xts zoo
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'PerformanceAnalytics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:graphics':
+## 
+##     legend
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{importation-fichier-de-donnuxe9e}{%
+\section{Importation fichier de
+donnée}\label{importation-fichier-de-donnuxe9e}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{crmdata =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'CRM - data.csv'}\NormalTok{, }\DataTypeTok{row.names=}\DecValTok{1}\NormalTok{)}
+\NormalTok{crmdata}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          Origine Sexe Taille Pointure Poids TempsSite MarquePref MontantFacture
+## Willard     Mars    M      9       26    50        28   Marque A            153
+## Derrick   Pluton    M    102       40   335        39   Marque D            229
+## Olivia      Mars    F     13       31    68        29   Marque A            118
+## Marc        Mars    M     20       29    81        40   Marque C            160
+## Alice     Pluton    F    116       33   378        11   Marque B            248
+## Elijah      Mars    M     22       30    88        44   Marque C            137
+## Clyde       Mars    M     27       29   105        42   Marque C            142
+## Angel       Mars    F     31       28   116        51   Marque A            151
+## Randy      Terre    M      4       29    36        18   Marque A            174
+## Robin      Terre    M      5       33    40        40   Marque C            123
+## Elias     Pluton    M    107       32   340        15   Marque C            257
+## Stanley     Mars    M     37       31   133        23   Marque A            148
+## Max        Terre    M      6       26    43        24   Marque C            122
+## Dewey       Mars    M     33       28   123        32   Marque B            166
+## Henry      Terre    M      4       34    39        49   Marque B            140
+## Sara      Pluton    F     91       29   296        11   Marque B            246
+## Lynn      Pluton    F     80       31   264        16   Marque D            192
+## Ira        Terre    F      3       27    29        43   Marque A            146
+## Blake     Pluton    M    100       24   315        14   Marque D            214
+## Freda     Pluton    F    101       28   331        15   Marque A            229
+## Kenneth     Mars    M     19       33    84        36   Marque C            153
+## Kerry      Terre    M      4       36    38        46   Marque C            132
+## Shaun      Terre    M      7       22    41        18   Marque C            176
+## Victoria  Pluton    F    116       27   369         4   Marque C            258
+## Monique   Pluton    F    106       24   333        29   Marque C            252
+## Deborah    Terre    F      3       29    33        37   Marque A            137
+## Eric        Mars    M     22       32    89        29   Marque D            142
+## Sonia      Terre    F      2       27    24        29   Marque C            152
+## Enrique    Terre    M      4       32    39        47   Marque A            158
+## Leticia   Pluton    F    111       29   356        21   Marque A            217
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{view}\NormalTok{(}\KeywordTok{dfSummary}\NormalTok{(crmdata))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Switching method to 'browser'
+\end{verbatim}
+
+\begin{verbatim}
+## Output file written: C:\Users\UTILIS~1\AppData\Local\Temp\RtmpgZ229G\filead81fb81ba2.html
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{corrplot}\NormalTok{(}\KeywordTok{cor}\NormalTok{(crmdata[,}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{8}\NormalTok{)]))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{crmdata_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(crmdata, }\DataTypeTok{col=}\KeywordTok{hcl.colors}\NormalTok{(}\DecValTok{3}\NormalTok{)[crmdata}\OperatorTok{$}\NormalTok{Origine], }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{lower.panel=}\OtherTok{NULL}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{xpd=}\NormalTok{T)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{'bottomleft'}\NormalTok{, }\DataTypeTok{fill=}\KeywordTok{hcl.colors}\NormalTok{(}\DecValTok{3}\NormalTok{), }\DataTypeTok{legend=}\KeywordTok{unique}\NormalTok{(crmdata}\OperatorTok{$}\NormalTok{Origine))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{crmdata_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qplot}\NormalTok{(Origine, Poids, }\DataTypeTok{data=}\NormalTok{crmdata, }\DataTypeTok{color=}\NormalTok{Origine, }\DataTypeTok{geom=}\KeywordTok{c}\NormalTok{(}\StringTok{'boxplot'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{crmdata_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(crmdata[,}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DecValTok{8}\NormalTok{)], }\DecValTok{2}\NormalTok{, tapply, crmdata}\OperatorTok{$}\NormalTok{Origine, mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Taille Pointure Poids TempsSite MontantFacture
+## Mars     23.3     29.7  93.7      35.4          147.0
+## Pluton  103.0     29.7 331.7      17.5          234.2
+## Terre     4.2     29.5  36.2      35.1          146.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(}
+  \KeywordTok{prop.table}\NormalTok{(}\KeywordTok{table}\NormalTok{(crmdata}\OperatorTok{$}\NormalTok{MarquePref, crmdata}\OperatorTok{$}\NormalTok{Origin), }\DecValTok{2}\NormalTok{),}
+  \DataTypeTok{legend=}\NormalTok{T,}
+  \DataTypeTok{col=}\KeywordTok{hcl.colors}\NormalTok{(}\KeywordTok{length}\NormalTok{(}\KeywordTok{levels}\NormalTok{(crmdata}\OperatorTok{$}\NormalTok{MarquePref)), }\DataTypeTok{alpha=}\FloatTok{0.6}\NormalTok{),}
+  \DataTypeTok{args.legend=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{x=}\StringTok{"bottom"}\NormalTok{, }\DataTypeTok{inset=}\OperatorTok{-}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{horiz=}\NormalTok{T)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{crmdata_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(}
+  \KeywordTok{prop.table}\NormalTok{(}\KeywordTok{table}\NormalTok{(crmdata}\OperatorTok{$}\NormalTok{MarquePref, crmdata}\OperatorTok{$}\NormalTok{Sexe), }\DecValTok{2}\NormalTok{),}
+  \DataTypeTok{legend=}\NormalTok{T,}
+  \DataTypeTok{col=}\KeywordTok{hcl.colors}\NormalTok{(}\KeywordTok{length}\NormalTok{(}\KeywordTok{levels}\NormalTok{(crmdata}\OperatorTok{$}\NormalTok{MarquePref)), }\DataTypeTok{alpha=}\FloatTok{0.6}\NormalTok{),}
+  \DataTypeTok{args.legend=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{x=}\StringTok{"bottom"}\NormalTok{, }\DataTypeTok{inset=}\OperatorTok{-}\FloatTok{0.3}\NormalTok{, }\DataTypeTok{horiz=}\NormalTok{T)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{crmdata_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\hypertarget{conclusion}{%
+\subsection{Conclusion}\label{conclusion}}
+
+
+\end{document}

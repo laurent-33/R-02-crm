@@ -1,0 +1,86 @@
+---
+title: "crm"
+author: "laurent"
+date: "19/11/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r}
+library(summarytools)
+library(corrplot)
+library(PerformanceAnalytics)
+library(ggplot2)
+library(FactoMineR)
+```
+
+
+# Importation fichier de donnée
+
+```{r cars}
+crmdata = read.csv('CRM - data.csv', row.names=1)
+crmdata
+```
+
+```{r}
+view(dfSummary(crmdata))
+```
+
+```{r}
+corrplot(cor(crmdata[,c(3:6, 8)]))
+```
+
+```{r}
+pairs(crmdata, col=hcl.colors(3)[crmdata$Origine], pch=19, lower.panel=NULL)
+par(xpd=T)
+legend('bottomleft', fill=hcl.colors(3), legend=unique(crmdata$Origine))
+```
+
+```{r}
+qplot(Origine, Poids, data=crmdata, color=Origine, geom=c('boxplot'))
+```
+
+```{r}
+apply(crmdata[,c(3:6, 8)], 2, tapply, crmdata$Origine, mean)
+```
+
+```{r}
+barplot(
+  prop.table(table(crmdata$MarquePref, crmdata$Origin), 2),
+  legend=T,
+  col=hcl.colors(length(levels(crmdata$MarquePref)), alpha=0.6),
+  args.legend=list(x="bottom", inset=-0.3, horiz=T)
+  )
+
+```
+
+
+```{r}
+barplot(
+  prop.table(table(crmdata$MarquePref, crmdata$Sexe), 2),
+  legend=T,
+  col=hcl.colors(length(levels(crmdata$MarquePref)), alpha=0.6),
+  args.legend=list(x="bottom", inset=-0.3, horiz=T)
+  )
+```
+
+```{r}
+qplot(Origine, MontantFacture, data=crmdata, color=MarquePref, geom=c('boxplot'))
+```
+
+```{r}
+summary.PCA(PCA(crmdata[, c(3:6, 8)]))
+```
+
+
+
+## Obervations et conclusion
+
+- Les plus gros acheteurs sont les Plutoniens, qui achètent toutes les marques équitablement.
+- Les terriens et marsiens consomment d'une façon similaire, A et C à 50-50 mais peu de B et D
+- Les femmes achètent des chaussures chères et viennent de pluton
+- Si on a un nouveau produit, le proposer d'abord aux plutoniens qui sont gros des consommateurs (plutot modèle femme)
+- 
+
+
